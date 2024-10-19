@@ -69,6 +69,7 @@ function bookCard(book) {
     let title = document.createElement('h2');
     let author = document.createElement('h3');
     let date = document.createElement('span');
+    let pagecount = document.createElement('span');
     let closeBtn = document.createElement('button');
     closeBtn.dataset.id = book.id;
     closeBtn.textContent = 'X';
@@ -76,10 +77,12 @@ function bookCard(book) {
     title.textContent = book.title;
     author.textContent = book.author;
     date.textContent = book.publishDate;
+    pagecount.textContent = book.pagecount;
 
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(date);
+    card.appendChild(pagecount);
     card.appendChild(closeBtn);
 
     card.style.background = book.style;

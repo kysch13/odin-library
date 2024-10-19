@@ -33,14 +33,22 @@ body {
     margin-bottom: 5px;
 }
 
+.book-card span {
+    display: block;
+    margin-bottom: 10px;
+}
+
 .book-card h3::before {
     content: 'Written by:';
 
 }
 
-.book-card span::before {
+.book-card span:first-of-type::before {
     content: 'Published in:';
+}
 
+.book-card span:last-of-type::before {
+    content: 'Pages:';
 }
 
 .book-card button {
