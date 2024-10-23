@@ -4,6 +4,26 @@ body {
     background-color: #333;
 }
 
+.main {
+    display: grid;
+    grid-template: 100vh / 1fr 3fr;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+.sidebar {
+    height: 100vh;
+    max-height: 100vh;
+    background-color: #222222;
+    padding: 20px;
+}
+
+.content {
+    max-height: 100vh;
+    overflow: scroll;
+}
+
 #library {
     display: grid;
     grid-template: 1fr / repeat(4, 1fr);
@@ -24,7 +44,7 @@ body {
 
 
 
-.book-card h3::before, .book-card span::before {
+.book-card h3::before, .book-card span::before, .book-card .readstatus-toggle::before {
     display: block;
     font-size: 13px;
     color: #333333;
@@ -43,11 +63,11 @@ body {
 
 }
 
-.book-card span:first-of-type::before {
+.book-card > span:first-of-type::before {
     content: 'Published in:';
 }
 
-.book-card span:last-of-type::before {
+.book-card > span:last-of-type::before {
     content: 'Pages:';
 }
 
@@ -66,4 +86,74 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#add-book-form {
+    padding: 20px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #777777;
+}
+
+#add-book-form label {
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+#add-book-form input {
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    background-color: #171717;
+    color: #ffffff;
+    border: 1px solid #444444;
+    border-radius: 5px;
+    display: block;
+    padding: 10px 15px;
+}
+
+.card-read-toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.readstatus-toggle::before {
+    content: 'Finished book?';
+}
+
+.readstatus-toggle input {
+    position: absolute;
+}
+
+.readstatus-toggle span {
+    display: block;
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
+    background-color: #777777;
+    border-radius: 20px;
+    border: 1px solid #555555;
+    transition: 0.4s;
+}
+
+.readstatus-toggle span::before {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    transition: 0.4s;
+}
+
+.readstatus-toggle input:checked + span::before {
+    transform:translateX(20px);
+}
+
+.readstatus-toggle input:checked + span {
+    background-color: #16a676;
 }

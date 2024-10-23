@@ -8,33 +8,40 @@
     <script src="js/scripts.js" defer></script>
 </head>
 <body>
-    <div id="library"></div>
-    <div class="add-book">
-        <form id="add-book-form" action="" method="post">
-            <div>
-                <label for="title">title</label>
-                <input type="text" name="title" id="title">
+    <div class="main">
+        <section class="sidebar">
+            <div class="add-book">
+                <form id="add-book-form" action="" method="post">
+                    <div>
+                        <label for="title">Title:</label>
+                        <input type="text" name="title" id="title">
+                    </div>
+                    <div>
+                        <label for="author">Author:</label>
+                        <input type="text" name="author" id="author">
+                    </div>
+                    <div>
+                        <label for="pagecount">Pages:</label>
+                        <input type="number" name="pagecount" id="pagecount">
+                    </div>
+                    <div>
+                        <label for="publishdate">Publish Date:</label>
+                        <input type="number" name="publishdate" id="publishdate">
+                    </div>
+                    <div>
+                        <label for="readstatus">Finished Book?</label>
+                        <input type="checkbox" name="readstatus" id="readstatus">
+                    </div>
+                    <div>
+                        <button type="button" id="add-book-submit">Add Book</button>
+                    </div>
+                </form>
             </div>
-            <div>
-                <label for="author">author</label>
-                <input type="text" name="author" id="author">
-            </div>
-            <div>
-                <label for="pagecount">pagecount</label>
-                <input type="number" name="pagecount" id="pagecount">
-            </div>
-            <div>
-                <label for="publishdate">publishdate</label>
-                <input type="number" name="publishdate" id="publishdate">
-            </div>
-            <div>
-                <label for="readstatus">readstatus</label>
-                <input type="text" name="readstatus" id="readstatus">
-            </div>
-            <div>
-                <button type="button" id="add-book-submit">Add Book</button>
-            </div>
-        </form>
+        </section>
+        <section class="content">
+            <div id="library"></div>
+        </section>
     </div>
+
 </body>
 </html>

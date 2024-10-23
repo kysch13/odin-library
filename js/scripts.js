@@ -8,8 +8,12 @@ addBookBtn.addEventListener('click', () => {
 });
 
 library.addEventListener('click', (e) => {
+    console.log(e.target);
     if (e.target.innerText === 'X') {
         deleteBook(e.target.dataset.id);
+    }
+    if (e.target.classList == 'card-read-toggle') {
+        toggleReadStatus(e.target.dataset.id);
     }
 });
 
@@ -23,6 +27,15 @@ function deleteBook(id) {
     outputBooks();
 }
 
+function toggleReadStatus(id) {
+    for (let i=0; i<myLibrary.length; i++) {
+        if (myLibrary[i].id == id) {
+            myLibrary[i].readstatus = !myLibrary[i].readstatus;
+            break;
+        }
+    }
+}
+
 
 function addBookFormSubmit() {
     let form = document.getElementById('add-book-form');
@@ -30,7 +43,12 @@ function addBookFormSubmit() {
     let formObj = {};
     inputs.forEach(input => {
         let key = input.id;
-        formObj[key] = input.value;
+        if (input.type == 'checkbox') {
+            formObj[key] = input.checked;
+        } else {
+            formObj[key] = input.value;
+        }
+        
     });
 
     addBookToLibrary(formObj.title, formObj.author, formObj.publishdate, formObj.pagecount, formObj.readstatus);
@@ -70,6 +88,20 @@ function bookCard(book) {
     let author = document.createElement('h3');
     let date = document.createElement('span');
     let pagecount = document.createElement('span');
+
+    // Read staus toggle switch
+    let readstatus = document.createElement('label');
+    readstatus.classList.add('readstatus-toggle');
+    let readToggle = document.createElement('input');
+    let readSlider = document.createElement('span');
+    readToggle.type = 'checkbox';
+    readToggle.dataset.id = book.id;
+    readToggle.classList.add('card-read-toggle');
+    readToggle.checked = book.readstatus;
+    readstatus.appendChild(readToggle);
+    readstatus.appendChild(readSlider);
+
+
     let closeBtn = document.createElement('button');
     closeBtn.dataset.id = book.id;
     closeBtn.textContent = 'X';
@@ -83,6 +115,7 @@ function bookCard(book) {
     card.appendChild(author);
     card.appendChild(date);
     card.appendChild(pagecount);
+    card.appendChild(readstatus);
     card.appendChild(closeBtn);
 
     card.style.background = book.style;
