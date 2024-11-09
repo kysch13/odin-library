@@ -54,7 +54,7 @@ function addBookFormSubmit() {
     addBookToLibrary(formObj.title, formObj.author, formObj.publishdate, formObj.pagecount, formObj.readstatus);
     outputBooks();
 }
-
+/*
 function Book(title, author, publishDate, pagecount, readstatus, id) {
     this.title = title;
     this.author = author;
@@ -63,6 +63,19 @@ function Book(title, author, publishDate, pagecount, readstatus, id) {
     this.readstatus = readstatus;
     this.id = id;
     this.style = `linear-gradient(90deg, #ffffff, #ffffff), linear-gradient(45deg, rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.5), rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.75)`;
+}
+*/
+
+class Book {
+    constructor(title, author, publishDate, pagecount, readstatus, id) {
+        this.title = title;
+        this.author = author;
+        this.publishDate = publishDate;
+        this.pagecount = pagecount;
+        this.readstatus = readstatus;
+        this.id = id;
+        this.style = `linear-gradient(90deg, #ffffff, #ffffff), linear-gradient(45deg, rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.5), rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.75)`;
+    }
 }
 
 function addBookToLibrary(title, author, publishDate, pagecount, readstatus) {
